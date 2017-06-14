@@ -17,12 +17,14 @@ buildscript {
 apply plugin: 'com.android.application'
 
 ext {
-    supportLibraryVersion = '24.2.1'
+    supportLibraryVersion = '25.4.0'
 }
 
 repositories {
     jcenter()
-
+    maven {
+        url "https://maven.google.com"
+    }
     flatDir {
         dirs 'libs'
     }
@@ -81,7 +83,7 @@ tasks.withType(Test) {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '26.0.0'
 
     defaultConfig {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
