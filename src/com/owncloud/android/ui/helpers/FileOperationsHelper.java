@@ -139,12 +139,14 @@ public class FileOperationsHelper {
      * @param password Optional password to protect the public share
      * @param expirationTimeInMillis Optional expiration time
      * @param uploadToFolderPermission Optional permissions to upload files to the folder
+     * @param permissions Optional permissions to allow or not specific actions in the folder
      */
     public void shareFileViaLink(OCFile file,
                                  String name,
                                  String password,
                                  long expirationTimeInMillis,
-                                 boolean uploadToFolderPermission)
+                                 boolean uploadToFolderPermission,
+                                 int permissions)
     {
 
         if (isSharedSupported()) {
@@ -184,6 +186,11 @@ public class FileOperationsHelper {
                 createShareFileViaLink.putExtra(
                         OperationsService.EXTRA_SHARE_PUBLIC_UPLOAD,
                         uploadToFolderPermission
+                );
+
+                createShareFileViaLink.putExtra(
+                        OperationsService.EXTRA_SHARE_PERMISSIONS,
+                        permissions
                 );
 
                 mWaitingForOpId = mFileActivity.getOperationsServiceBinder().
